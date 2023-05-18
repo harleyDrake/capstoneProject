@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Top 40 Games || By Decade</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Video Games Top Ten Lists">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Harley Drake">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}" />
+        <script>
+            //class for the top 40 list to be displayed
+            class Game {
+                constructor(id, name, platform, genre, year) {
+                    this.id = id;
+                    this.name = name;
+                    this.platform = platform;
+                    this.genre = genre;
+                    this.year = year;
+                }
+            }
+            // object that contains all of the games to be displayed 
+            let games = [];
+        </script>
+    </head>
+
+    <body>
+        <nav>
+            <a class="nav-item" href="/">Home</a>
+            <a class="nav-item" href="/consoles">By Console</a>
+            <a class="nav-item" href="/top40">Top 100</a>
+            <a class="nav-item" href="/totalsales">Sales</a>
+            <a class="nav-item" href="/year">By Year</a>
+        </nav>
+
+        <h1>Top 40 Games by Decade</h1>
+        <div id="decade-container">
+            <form style="width: 100%;" method="POST" action="">
+                {% csrf_token %}
+                <input id="btn-80" class="decade-btn" type="submit" name="decade" value="1980s">
+            </form>
+            <form style="width: 100%;" method="POST" action="">
+                {% csrf_token %}
+                <input id="btn-90" class="decade-btn" type="submit" name="decade" value="1990s">
+            </form>
+            <form style="width: 100%;" method="POST" action="">
+                {% csrf_token %}
+                <input id="btn-00" class="decade-btn" type="submit" name="decade" value="2000s">
+            </form>
+            <form style="width: 100%;" method="POST" action="">
+                {% csrf_token %}
+                <input id="btn-10" class="decade-btn" type="submit" name="decade" value="2010s">
+            </form>    
+        </div>
+        <hr />
+        <div>
+            {% if games %}
+                <h2>
+                    The Top Games of the {{ decade }}.
+                </h2>
+                {% if chart %}
+                    {{ chart|safe }}
+                {% endif %}
+
+                {% for game in games %}
+                    <script>
+                        var value = new Game(
+                            "{{ game.id }}", 
+                            "{{ game.name }}",
+                            "{{ game.platform }}",
+                            "{{ game.genre }}",
+                            "{{ game.year }}"
+                        );
+                        games.push(value)
+                    </script>
+                {% endfor %}
+                <h3>The top 40</h3>
+                <div id="top-40">
+                </div>
+                <script>
+                    let leftList = document.createElement("div");
+                    leftList.id = "left-list";
+                    let listContainer = document.getElementById("top-40");
+                    listContainer.appendChild(leftList);
+                    // for the first half list
+                    for(let i = 0; i < 20; i++){
+                        let listItem = document.createElement("div");
+                        let game = games[i];
+                        listItem.innerHTML = game.id + ': ' + game.name + '<b> (' + game.platform + ') </b>';
+                        leftList.appendChild(listItem); 
+                    }
+
+                    let rightList = document.createElement("div");
+                    rightList.id = "right-list";
+                    listContainer.appendChild(rightList);
+                    //for the second half list
+                    for(let i = 20; i < 40; i++){
+                        let listItem = document.createElement("div");
+                        let game = games[i];
+                        listItem.innerHTML = game.id + ': ' + game.name + '<b> (' + game.platform + ') </b>';
+                        rightList.appendChild(listItem); 
+                    }
+                </script>
+
+            {% else %}
+                <p class="no-choice">
+                    Select one of the above to view to <strong>the top 40</strong>
+                    of the chosen decade...
+                </p>
+            {% endif %}
+        </div>
+
+        <br />
+        <br />
+        <footer style="
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.3em;
+            line-height: 1.6em;"
+        >
+            Created by Harley Drake u3144550, <br />
+            <a href="/sources">Sources</a>
+        </footer>
+    </body>
+</html>

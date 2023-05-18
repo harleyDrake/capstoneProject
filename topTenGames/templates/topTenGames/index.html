@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Top 40 Games</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Video Games Top Ten Lists">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Harley Drake">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}" />
+    </head>
+    <body>
+        <img class="banner" alt="Background Banner" src="{% static 'images/Banner.png' %}" />
+
+        <h1>Welcome To The Real Top 40!</h1>
+
+        <p id="subtitle">Select one of the categories below to view the top 40 best selling video games...</p>
+
+        <main id="index-menu">
+                <a class="index-item" href="decade">By Decade</a>
+                <a class="index-item" href="consoles"> By Console </a>
+                <a class="index-item" href="top40">The Top 100 Goats</a>
+                <a class="index-item" href="year"> Search a Year... </a>
+                <a class="index-item" href="totalsales">Game Sales Data</a>
+        </main>
+
+        <br />
+        <br />
+        <footer style="
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.3em;
+            line-height: 1.6em;"
+        >
+            Created by Harley Drake u3144550, <br />
+            <a href="/sources">Sources</a>
+        </footer>
+    </body>
+</html>

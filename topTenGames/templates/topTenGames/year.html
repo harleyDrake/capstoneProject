@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gaming top 40 || By Year</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Video Games Top Ten Lists">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Harley Drake">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}" />
+        <script>
+            //class for the top 40 list to be displayed
+            class Game {
+                constructor(id, name, platform, genre, year) {
+                    this.id = id;
+                    this.name = name;
+                    this.platform = platform;
+                    this.genre = genre;
+                    this.year = year;
+                }
+            }
+            // object that contains all of the games to be displayed 
+            let games = [];
+        </script>
+    </head>
+    <body>
+        <img class="banner" alt="Background Banner" src="{% static 'images/Banner3.png' %}" />
+        <nav>
+            <a class="nav-item" href="/">Home</a>
+            <a class="nav-item" href="/consoles">By Console</a>
+            <a class="nav-item" href="/top40">Top 100</a>
+            <a class="nav-item" href="/decade">By Decade</a>
+            <a class="nav-item" href="/totalsales">Sales</a>
+        </nav>
+
+        <h3>Enter a year between 1980 and 2016:</h3> <br />
+        <form id="year-search-container" method="POST" action="">
+            {% csrf_token %}
+            <input id="year-search" type="text" name="year" required maxlength="4"/> <br />
+            <input id="year-btn" type="submit" name="yearSubmit" value="Search..." />
+        </form>
+        {% if yearError %}
+            <p class="no-choice"><b>{{ yearError }}</b></p>
+        {% elif year %}
+            <h2>Results for the year {{ year }}</h2>
+        
+            {{ chart|safe }}
+
+            {% for game in games %}
+            <script>
+                var value = new Game(
+                    "{{ game.id }}", 
+                    "{{ game.name }}",
+                    "{{ game.platform }}",
+                    "{{ game.genre }}",
+                    "{{ game.year }}"
+                );
+                games.push(value)
+            </script>
+            {% endfor %}
+            <h3>The top 40</h3>
+            <div id="top-40">
+            </div>
+            <script>
+                let leftList = document.createElement("div");
+                leftList.id = "left-list";
+                let listContainer = document.getElementById("top-40");
+                listContainer.appendChild(leftList);
+                // for the first half list
+                for(let i = 0; i < 20; i++){
+                    let listItem = document.createElement("div");
+                    let game = games[i];
+                    listItem.innerHTML = game.id + ': ' + game.name + '<b> (' + game.platform + ') </b>';
+                    leftList.appendChild(listItem); 
+                }
+
+                let rightList = document.createElement("div");
+                rightList.id = "right-list";
+                listContainer.appendChild(rightList);
+                //for the second half list
+                for(let i = 20; i < 40; i++){
+                    let listItem = document.createElement("div");
+                    let game = games[i];
+                    listItem.innerHTML = game.id + ': ' + game.name + '<b> (' + game.platform + ') </b>';
+                    rightList.appendChild(listItem); 
+                }
+            </script>
+        {% endif %}
+
+        <br />
+        <br />
+        <footer style="
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.3em;
+            line-height: 1.6em;"
+        >
+            Created by Harley Drake u3144550, <br />
+            <a href="/sources">Sources</a>
+        </footer>
+    </body>
+</html>

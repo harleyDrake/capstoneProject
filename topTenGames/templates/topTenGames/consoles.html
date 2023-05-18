@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Top 40 Games || By Console </title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Video Games Top Ten Lists">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Harley Drake">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'style/main.css' %}" />
+        <script>
+            //class for the top 40 list to be displayed
+            class Game {
+                constructor(id, name, platform, genre, year) {
+                    this.id = id;
+                    this.name = name;
+                    this.platform = platform;
+                    this.genre = genre;
+                    this.year = year;
+                }
+            }
+            // object that contains all of the games to be displayed 
+            let games = [];
+        </script>
+    </head>
+    <body>
+        <nav>
+            <a class="nav-item" href="/">Home</a>
+            <a class="nav-item" href="/totalsales">Sales</a>
+            <a class="nav-item" href="/top40">Top 100</a>
+            <a class="nav-item" href="/decade">By Decade</a>
+            <a class="nav-item" href="/year">By Year</a>
+        </nav>
+
+        <h1>Top 40 Games By Console</h1>
+        <hr />
+
+        {% if games %}
+        <h2>
+            The Top Games on the {{ console }}.
+        </h2>
+            {% if chart %}
+                {{ chart|safe }}
+            {% endif %}
+
+            {% for game in games %}
+                <script>
+                    var value = new Game(
+                        "{{ game.id }}", 
+                        "{{ game.name }}",
+                        "{{ game.platform }}",
+                        "{{ game.genre }}",
+                        "{{ game.year }}"
+                    );
+                    games.push(value)
+                </script>
+
+            {% endfor %}
+            <h3>The top 40</h3>
+            <div id="top-40">
+            </div>
+            <script>
+                let leftList = document.createElement("div");
+                leftList.id = "left-list";
+                let listContainer = document.getElementById("top-40");
+                listContainer.appendChild(leftList);
+                // for the first half list
+                for(let i = 0; i < 20; i++){
+                    let listItem = document.createElement("div");
+                    let game = games[i];
+                    listItem.innerHTML = game.id + ': ' + game.name;
+                    leftList.appendChild(listItem); 
+                }
+
+                let rightList = document.createElement("div");
+                rightList.id = "right-list";
+                listContainer.appendChild(rightList);
+                //for the second half list
+                for(let i = 20; i < 40; i++){
+                    let listItem = document.createElement("div");
+                    let game = games[i];
+                    listItem.innerHTML = game.id + ': ' + game.name;
+                    rightList.appendChild(listItem); 
+                }
+            </script>
+        {% else %}
+        <br />
+            <p class="no-choice">
+                Select one of the below to view to <strong>the top 40</strong>
+                of the chosen console...
+            </p>
+        {% endif %}
+
+        <main id="console-container">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="A2600" class="console-btn" title="Atari 2600"  type="submit" name="console" value="Atari 2600" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="NES" class="console-btn" title="Nintendo Entertainment System" type="submit" name="console" value="Nintendo" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="SNES" class="console-btn" title="Super Nintendo Entertainment System" type="submit" name="console" value="Super Nintendo" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="N64" class="console-btn" title="Nintendo 64" type="submit" name="console" value="Nintendo 64" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="GC" class="console-btn" title="Game Cube" type="submit" name="console" value="Game Cube" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="GB" class="console-btn" title="Gameboy" type="submit" name="console" value="Gameboy" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="GBA" class="console-btn" title="Gameboy Advance" type="submit" name="console" value="Gameboy Advance" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="PS" class="console-btn" title="Playstation" type="submit" name="console" value="Playstation" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="PS2" class="console-btn" title="Playstation 2" type="submit" name="console" value="Playstation 2" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="PS3" class="console-btn" title="Playstation 3" type="submit" name="console" value="Playstation 3" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="PS4" class="console-btn" title="Playstation 4" type="submit" name="console" value="Playstation 4" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="XB" class="console-btn" title="Xbox" type="submit" name="console" value="Xbox" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="X360" class="console-btn" title="Xbox 360" type="submit" name="console" value="Xbox 360" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="XOne" class="console-btn" title="Xbox One" type="submit" name="console" value="Xbox One" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="Wii" class="console-btn" title="Wii" type="submit" name="console" value="Wii" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="DS" class="console-btn" title="Nintendo DS" type="submit" name="console" value="Nintendo DS" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="N3DS" class="console-btn" title="Nintendo 3DS" type="submit" name="console" value="Nintendo 3DS" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="PC" class="console-btn" title="PC" type="submit" name="console" value="PC" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="GEN" class="console-btn" title="Sega Genesis" type="submit" name="console" value="Sega Genesis" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="WiiU" class="console-btn" title="Wii U" type="submit" name="console" value="Wii U" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="PSP" class="console-btn" title="Play Station Portable" type="submit" name="console" value="PSP" />
+            </form>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <input id="PSV" class="console-btn" title="PSP Vita" type="submit" name="console" value="PS Vita" />
+            </form>
+        </main>
+        
+
+        <br />
+        <br />
+
+        <footer style="
+            text-align: center;
+            font-family: monospace;
+            font-size: 1.3em;
+            line-height: 1.6em;"
+        >
+            Created by Harley Drake u3144550, <br />
+            <a href="/sources">Sources</a>
+        </footer>
+    </body>
+</html>

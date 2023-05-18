@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
+
+h1 {
+    font-family: "Press Start 2P", monospace;
+    text-align: center;
+}
+
+p#subtitle {
+    text-align: center;
+    font-family: "Orbitron", 'Courier New', Courier, monospace;
+    font-size: 1.3em;
+    letter-spacing: 0.3em;
+    line-height: 2em;
+}
+
+.banner {
+    display: block;
+    margin: auto;
+}
+
+main#index-menu {
+    margin: auto;
+    position: relative;
+    border: 4px double red;
+    background-color: black;
+}
+
+main#console-container {
+    border: 2px solid red;
+    display: grid;
+    width: 90%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: 100px auto;
+}
+
+main#console-container form {
+    width: 100%;
+}
+
+.console-btn {
+    width: 100%;
+    border: 2px solid blue;
+    height: 100px;
+    color: rgba(0,0,0,0);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    word-break: break-all;
+
+}
+
+h3 {
+    font-family: "Press Start 2P";
+    text-align: center;
+    letter-spacing: 0.3em;
+}
+
+.console-btn:hover {
+    filter:brightness(10%);
+}
+
+
+
+.index-item {
+    border: 1px solid black;
+    display: block;
+    padding: 10px;
+    font-family: "Press Start 2P", 'Courier New', Courier, monospace;
+    color: black;
+    text-shadow: 2px 2px 3px red;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    top: 0;
+    right: 0;
+    background-color: white;
+    transition: 0.1s;
+}
+
+.index-item:hover {
+    top: -4px;
+    right: 4px;
+}
+
+.index-item:active {
+    background-color: cyan;
+    top: 0;
+    right: 0;
+}
+
+/* Navbar */
+nav {
+    background-color: black;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 2px solid red;
+}
+
+.nav-item {
+    display: block;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-family: "Orbitron";
+    text-decoration: none;
+    letter-spacing: 0.2em;
+    transition: 0.1s;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-item:hover {
+    background-color: rgb(60, 60, 60);
+    
+}
+
+.nav-item:active {
+    background-color: blue;
+}
+
+#decade-container {
+    display: flex;
+    width: 95%;
+    margin: 100px auto;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 2px solid blue;
+
+}
+
+.decade-btn {
+    border: none;
+    font-family: "Press Start 2P";
+    padding: 50px;
+    width: 100%;
+    font-size: 1.5em;
+    cursor: pointer;
+    letter-spacing: 0.3em;
+
+}
+
+.decade-btn:hover {
+    filter: brightness(150%);
+}
+
+#btn-80 {
+    background-image: url("images/eighties.png");
+    background-size: cover;
+    -webkit-backdrop-filter: grayscale(50%);
+    backdrop-filter: grayscale(50%);
+    color: blue;
+    text-shadow: 2px 2px 3px red;
+}
+
+#btn-90 {
+    background-image: url("images/ninties.png");
+    background-size: cover;
+    -webkit-backdrop-filter: grayscale(50%);
+    backdrop-filter: grayscale(50%);
+    color: yellow;
+    text-shadow: 2px 2px 3px black;
+}
+
+#btn-00 {
+    background-image: url("images/naughties.png");
+    background-size: cover;
+    -webkit-backdrop-filter: grayscale(50%);
+    backdrop-filter: grayscale(50%);
+    color: greenyellow;
+    text-shadow: 2px 2px 3px black;
+}
+
+#btn-10 {
+    background-image: url("images/teens.png");
+    background-size: cover;
+    -webkit-backdrop-filter: grayscale(50%);
+    backdrop-filter: grayscale(50%);
+    color: white;
+    text-shadow: 2px 2px 3px blue;
+}
+
+.no-choice {
+    font-family: "Orbitron";
+    text-align: center;
+    font-size: 1.2em;
+    letter-spacing: 0.3em;
+}
+
+#top-40 {
+    display: flex;
+    padding: 10px;
+    border: 2px solid red;
+    flex-direction: row;
+    justify-content: space-around;
+    font-family: "Orbitron";
+    letter-spacing: 0.2em;
+}
+
+#left-list div, #right-list div {
+    padding: 3px;
+}
+
+h2 {
+    font-family: "Press Start 2P";
+    letter-spacing: 0.2em;
+    text-shadow: 2px 2px violet;
+    text-align: center;
+}
+
+#A2600 {
+    background-image: url("images/2600.png");
+    background-size: cover;
+}
+
+#NES {
+    background-image: url("images/NES.png");
+    background-size: cover;
+}
+
+#SNES {
+    background-image: url("images/SNES.png");
+    background-size: cover;
+}
+
+#N64 {
+    background-image: url("images/N64.png");
+    background-size: cover;
+}
+
+#GC {
+    background-image: url("images/GC.png");
+    background-size: cover;
+}
+
+#GB {
+    background-image: url("images/GB.png");
+    background-size: cover;
+}
+
+#GBA {
+    background-image: url("images/GBA.png");
+    background-size: cover;
+}
+
+#PS {
+    background-image: url("images/PS.png");
+    background-size: cover;
+}
+
+#PS2 {
+    background-image: url("images/PS2.png");
+    background-size: cover;
+}
+
+#PS3 {
+    background-image: url("images/PS3.png");
+    background-size: cover;
+}
+
+#PS4 {
+    background-image: url("images/PS4.png");
+    background-size: cover;
+}
+
+#XB {
+    background-image: url("images/Xbox.png");
+    background-size: cover;
+}
+
+#X360 {
+    background-image: url("images/X360.png");
+    background-size: cover;
+}
+
+#XOne {
+    background-image: url("images/Xone.png");
+    background-size: cover;
+}
+
+#Wii {
+    background-image: url("images/Wii.png");
+    background-size: cover;
+}
+
+#DS {
+    background-image: url("images/DS.png");
+    background-size: cover;
+}
+
+#N3DS {
+    background-image: url("images/3DS.png");
+    background-size: cover;
+}
+
+#PC {
+    background-image: url("images/PC.png");
+    background-size: cover;
+}
+
+#GEN {
+    background-image: url("images/GEN.png");
+    background-size: cover;
+}
+
+#WiiU {
+    background-image: url("images/WiiU.png");
+    background-size: cover;
+}
+
+#PSP {
+    background-image: url("images/PSP.png");
+    background-size: cover;
+}
+
+#PSV {
+    background-image: url("images/PSV.png");
+    background-size: cover;
+}
+
+#year-search-container {
+    display: block;
+    margin: auto;
+    border: 3px double black;
+    padding: 10px;
+    width: 75%;
+}
+
+#year-search-container input{
+    display: block;
+    margin: auto;
+}
+
+#year-search {
+    font-family: "Orbitron";
+    font-size: 1.3em;
+    width: 6em;
+    letter-spacing: 0.3em;
+    border: 2px solid black;
+    padding: 8px;
+}
+
+#year-search:focus {
+    outline: 2px solid blue;
+}
+
+#year-btn {
+    border: 2px solid black;
+    padding: 10px;
+    cursor: pointer;
+    font-family: "Press Start 2P";
+}
